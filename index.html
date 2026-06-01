@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Talks Event</title>
+    <style>body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 1.5em 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 0.5em 0 0;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+#search-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#category-search {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease;
+}
+
+#category-search:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+#schedule-section h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+#schedule-list {
+    display: grid;
+    gap: 20px;
+}
+
+.schedule-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.schedule-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.schedule-item h3 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.schedule-item .time {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 0.95em;
+}
+
+.schedule-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.schedule-item .speakers {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.schedule-item .categories span {
+    display: inline-block;
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.85em;
+}
+
+.schedule-item.lunch {
+    background-color: #f39c12;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.schedule-item.lunch h3 {
+    color: #ffffff;
+}
+
+.schedule-item.transition {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    background-color: #2c3e50;
+    color: #ffffff;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Tech Talks Day</h1>
+        <p>A full day of insightful technical talks.</p>
+    </header>
+
+    <main>
+        <section id="search-section">
+            <input type="text" id="category-search" placeholder="Search by category (e.g., AI, Node.js)">
+        </section>
+
+        <section id="schedule-section">
+            <h2>Event Schedule</h2>
+            <div id="schedule-list">
+                <!-- Schedule items will be rendered here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tech Talks Event</p>
+    </footer>
+
+    <script>const talksData = [
+    {
+        title: "Introduction to Generative AI",
+        speakers: ["Alice Smith"],
+        category: ["AI", "Machine Learning", "Generative Models"],
+        duration: 60, // minutes
+        description: "An overview of generative AI, its applications, and future trends."
+    },
+    {
+        title: "Building Scalable Microservices with Node.js",
+        speakers: ["Bob Johnson"],
+        category: ["Backend", "Node.js", "Microservices"],
+        duration: 60,
+        description: "Learn best practices for designing and implementing scalable microservices using Node.js."
+    },
+    {
+        title: "Modern Frontend Development with React Hooks",
+        speakers: ["Charlie Brown", "Diana Prince"],
+        category: ["Frontend", "React", "JavaScript"],
+        duration: 60,
+        description: "Deep dive into React Hooks and how they simplify state management and side effects in functional components."
+    },
+    {
+        title: "DevOps for Developers: CI/CD Pipelines",
+        speakers: ["Eve Adams"],
+        category: ["DevOps", "CI/CD", "Automation"],
+        duration: 60,
+        description: "Understand the essentials of CI/CD and how to set up automated deployment pipelines."
+    },
+    {
+        title: "Data Visualization with D3.js",
+        speakers: ["Frank White"],
+        category: ["Data Science", "Visualization", "JavaScript"],
+        duration: 60,
+        description: "Explore the power of D3.js to create stunning and interactive data visualizations."
+    },
+    {
+        title: "Cloud Native Applications with Kubernetes",
+        speakers: ["Grace Hopper"],
+        category: ["Cloud", "Kubernetes", "Containers"],
+        duration: 60,
+        description: "A practical guide to deploying and managing cloud-native applications on Kubernetes."
+    }
+];
+
+function formatTime(date) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function generateSchedule(talks) {
+    const eventStartTime = new Date();
+    eventStartTime.setHours(10, 0, 0, 0); // Event starts at 10:00 AM
+
+    const schedule = [];
+    let currentTime = new Date(eventStartTime); // Use a new Date object for current time
+
+    for (let i = 0; i < talks.length; i++) {
+        // Add transition before each talk except the first one and immediately after lunch
+        if (i > 0 && !(schedule[schedule.length - 1] && schedule[schedule.length - 1].type === "lunch")) {
+             // Check if previous item was a talk, if so, add transition
+             if (schedule.length > 0 && schedule[schedule.length - 1].type === "talk") {
+                schedule.push({
+                    type: "transition",
+                    startTime: new Date(currentTime),
+                    endTime: new Date(currentTime.getTime() + 10 * 60 * 1000), // 10 minutes
+                    duration: 10,
+                    description: "Transition Break"
+                });
+                currentTime.setMinutes(currentTime.getMinutes() + 10);
+            }
+        }
+        
+        // Lunch Break after the 3rd talk (index 2)
+        if (i === 2) {
+            schedule.push({
+                type: "lunch",
+                startTime: new Date(currentTime),
+                endTime: new Date(currentTime.getTime() + 60 * 60 * 1000), // 1 hour
+                duration: 60,
+                description: "Lunch Break"
+            });
+            currentTime.setMinutes(currentTime.getMinutes() + 60);
+
+            // Add transition after lunch
+            schedule.push({
+                type: "transition",
+                startTime: new Date(currentTime),
+                endTime: new Date(currentTime.getTime() + 10 * 60 * 1000), // 10 minutes
+                duration: 10,
+                description: "Transition Break"
+            });
+            currentTime.setMinutes(currentTime.getMinutes() + 10);
+        }
+
+        // Add the talk
+        schedule.push({
+            type: "talk",
+            ...talks[i],
+            startTime: new Date(currentTime),
+            endTime: new Date(currentTime.getTime() + talks[i].duration * 60 * 1000)
+        });
+        currentTime.setMinutes(currentTime.getMinutes() + talks[i].duration);
+    }
+    return schedule;
+}
+
+const fullSchedule = generateSchedule(talksData);
+
+function renderSchedule(scheduleToRender) {
+    const scheduleList = document.getElementById('schedule-list');
+    scheduleList.innerHTML = ''; // Clear previous entries
+
+    scheduleToRender.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('schedule-item');
+
+        const startTime = formatTime(item.startTime);
+        const endTime = formatTime(item.endTime);
+
+        if (item.type === 'talk') {
+            itemDiv.innerHTML = `
+                <span class="time">${startTime} - ${endTime}</span>
+                <h3>${item.title}</h3>
+                <p class="speakers">Speaker(s): ${item.speakers.join(', ')}</p>
+                <p>${item.description}</p>
+                <div class="categories">
+                    ${item.category.map(cat => `<span>${cat}</span>`).join('')}
+                </div>
+            `;
+        } else if (item.type === 'lunch') {
+            itemDiv.classList.add('lunch');
+            itemDiv.innerHTML = `
+                <span class="time">${startTime} - ${endTime}</span>
+                <h3>${item.description}</h3>
+            `;
+        } else if (item.type === 'transition') {
+            itemDiv.classList.add('transition');
+            itemDiv.innerHTML = `
+                <span class="time">${startTime} - ${endTime}</span>
+                <p>${item.description}</p>
+            `;
+        }
+        scheduleList.appendChild(itemDiv);
+    });
+}
+
+// Initial render
+document.addEventListener('DOMContentLoaded', () => {
+    renderSchedule(fullSchedule);
+
+    const searchInput = document.getElementById('category-search');
+    searchInput.addEventListener('input', (event) => {
+        const searchTerm = event.target.value.toLowerCase();
+        if (searchTerm === "") {
+            renderSchedule(fullSchedule); // Show full schedule if search is empty
+            return;
+        }
+
+        const filteredSchedule = fullSchedule.filter(item => {
+            if (item.type === 'talk' && item.category) {
+                return item.category.some(cat => cat.toLowerCase().includes(searchTerm));
+            }
+            return false;
+        });
+        renderSchedule(filteredSchedule);
+    });
+});</script>
+</body>
+</html>

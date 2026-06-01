@@ -1,0 +1,8 @@
+# Node.js
+node_modules/
+
+# Bundling script and generated files
+bundle.js
+
+# Other temporary or unrelated files
+eclipse-dates.txt
